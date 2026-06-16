@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Гайд: Как продавать через аналитику | СДЭК ЮГ</title>
+     
+    <!-- Подключение Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cdek: {
+                            orange: '#EF780E',
+                            green: '#00A164',
+                            gray: '#E1E1E0',
+                            purple: '#584D98',
+                            dark: '#111111',
+                            black: '#000000',
+                            white: '#FFFFFF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"TT Runs Trial Variable Roman"', 'Manrope', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: "TT Runs Trial Variable Roman", "Manrope", sans-serif;
+            background-color: #f9f9f9;
+            color: #111111;
+            scroll-behavior: smooth;
+        }
+        
+        .bg-pattern {
+            background-image: radial-gradient(#d1d1d1 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .magnetic-btn {
+            display: inline-flex;
+            transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .card-shadow {
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.05);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #00A164, #008f58);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+    <!-- Навигация -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 py-3 md:py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="flex items-center gap-2">
+                    <div class="h-6 w-px bg-gray-200 mx-1"></div>
+                    <div class="text-cdek-black leading-none">
+                        <p class="font-bold text-[10px] md:text-sm uppercase tracking-tight">ООО СДЭК ЮГ</p>
+                        <p class="text-[8px] md:text-[10px] text-gray-400 font-medium">Закрытые материалы</p>
+                    </div>
+                </div>
+            </div>
+            <a href="http://hr.infocdek.ru/" target="_blank" rel="noopener noreferrer" class="magnetic-btn bg-cdek-orange text-white px-4 py-2 md:px-6 md:py-2.5 rounded-xl font-bold text-xs md:text-sm shadow-lg shadow-cdek-orange/20">
+                Вакансии отдела
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Секция -->
+    <section class="relative pt-32 pb-8 md:pt-48 md:pb-12 px-4 md:px-8 bg-pattern">
+        <div class="max-w-4xl mx-auto relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-cdek-green/10 text-cdek-green font-bold text-xs md:text-sm mb-6 border border-cdek-green/20 scroll-reveal visible">
+                <i data-lucide="bar-chart-2" class="w-4 h-4"></i>
+                <span>Инструкция для B2B</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 text-cdek-black tracking-tight text-balance scroll-reveal visible delay-100">
+                Как закрывать сделки через <span class="text-cdek-green relative inline-block">цифры</span>, а не уговоры
+            </h1>
+            <p class="text-base md:text-xl text-gray-600 font-medium mb-10 leading-relaxed scroll-reveal visible delay-200">
+                Эпоха продажников, умеющих «заболтать клиента» или «продать ручку», безвозвратно ушла. Крупный B2B-бизнес покупает только у экспертов. В этом гайде мы показываем разницу между типичным «впаривателем» и крутым системным аналитиком.
+            </p>
+        </div>
+    </section>
+
+    <!-- Основной контент -->
+    <section class="pt-4 pb-12 md:pt-8 md:pb-16 px-4 md:px-8">
+        <div class="max-w-5xl mx-auto space-y-12">
+            
+            <!-- Матрица сравнения -->
+            <div class="bg-white rounded-[2.5rem] p-6 md:p-12 card-shadow scroll-reveal">
+                <h3 class="text-2xl md:text-4xl font-bold mb-8 text-center">Эволюция продаж: <br class="md:hidden">Кто забирает рынок?</h3>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Плохой подход -->
+                    <div class="bg-red-50/50 rounded-2xl p-6 md:p-8 border border-red-100">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-12 h-12 rounded-full bg-red-100 text-red-500 flex items-center justify-center shrink-0">
+                                <i data-lucide="x-circle" class="w-6 h-6"></i>
+                            </div>
+                            <h4 class="text-xl md:text-2xl font-bold text-red-900">«Впариватель»</h4>
+                        </div>
+                        <ul class="space-y-4 text-gray-700 text-sm md:text-base">
+                            <li class="flex items-start gap-3">
+                                <span class="text-red-400 mt-1 font-bold">•</span>
+                                <span><strong>Инструмент:</strong> Эмоции, давление, заученные скрипты, манипуляции.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-red-400 mt-1 font-bold">•</span>
+                                <span><strong>Аргументация:</strong> «Мы лидеры рынка», «Индивидуальный подход», «Отличное качество».</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-red-400 mt-1 font-bold">•</span>
+                                <span><strong>Главная скидка:</strong> Раздает скидки с порога, лишь бы клиент подписал договор.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-red-400 mt-1 font-bold">•</span>
+                                <span><strong>Итог:</strong> Быстрое выгорание, низкие чеки, клиенты уходят через месяц.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Хороший подход -->
+                    <div class="bg-cdek-green/5 rounded-2xl p-6 md:p-8 border border-cdek-green/20 relative overflow-hidden">
+                        <div class="absolute -top-10 -right-10 w-32 h-32 bg-cdek-green/10 rounded-full blur-2xl"></div>
+                        <div class="flex items-center gap-3 mb-6 relative z-10">
+                            <div class="w-12 h-12 rounded-full bg-cdek-green text-white flex items-center justify-center shrink-0 shadow-lg shadow-cdek-green/30">
+                                <i data-lucide="check-circle-2" class="w-6 h-6"></i>
+                            </div>
+                            <h4 class="text-xl md:text-2xl font-bold text-cdek-green">Системный аналитик</h4>
+                        </div>
+                        <ul class="space-y-4 text-gray-700 text-sm md:text-base relative z-10">
+                            <li class="flex items-start gap-3">
+                                <span class="text-cdek-green mt-1 font-bold">•</span>
+                                <span><strong>Инструмент:</strong> Excel, калькуляторы ROI, анализ бизнес-процессов клиента.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-cdek-green mt-1 font-bold">•</span>
+                                <span><strong>Аргументация:</strong> «Снизим издержки на логистику на 12% за счет изменения габаритов упаковки».</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-cdek-green mt-1 font-bold">•</span>
+                                <span><strong>Главная скидка:</strong> Защищает маржу компании. Продает ценность, а не дешевизну.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-cdek-green mt-1 font-bold">•</span>
+                                <span><strong>Итог:</strong> Партнерские отношения на годы, высокий LTV, огромные бонусы со сделок.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3 Шага -->
+            <div class="bg-white rounded-[2.5rem] p-8 md:p-12 card-shadow scroll-reveal">
+                <h3 class="text-2xl md:text-3xl font-bold mb-8">3 шага к интеллектуальным продажам</h3>
+                
+                <div class="space-y-8">
+                    <!-- Шаг 1 -->
+                    <div class="flex flex-col md:flex-row gap-6 items-start">
+                        <div class="w-16 h-16 rounded-2xl bg-gray-100 flex items-center justify-center shrink-0 font-black text-2xl text-gray-400">1</div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">Аудит вместо презентации</h4>
+                            <p class="text-gray-600 leading-relaxed">Не начинайте встречу с рассказа о том, какая у вас классная компания. Начните с вопросов о бизнесе клиента. Как у них сейчас выстроена логистика? Где они теряют деньги? Сколько стоит срыв сроков доставки для их репутации?</p>
+                        </div>
+                    </div>
+                    
+                    <div class="w-full h-px bg-gray-100"></div>
+
+                    <!-- Шаг 2 -->
+                    <div class="flex flex-col md:flex-row gap-6 items-start">
+                        <div class="w-16 h-16 rounded-2xl bg-gray-100 flex items-center justify-center shrink-0 font-black text-2xl text-gray-400">2</div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">Глаголы и Цифры вместо Прилагательных</h4>
+                            <p class="text-gray-600 leading-relaxed">Уберите из лексикона слова «надежный», «быстрый», «качественный». Замените их на твердые факты: «Доставляем за 24 часа», «Компенсируем 100% стоимости при утере», «Выделяем персонального аккаунт-менеджера».</p>
+                        </div>
+                    </div>
+
+                    <div class="w-full h-px bg-gray-100"></div>
+
+                    <!-- Шаг 3 -->
+                    <div class="flex flex-col md:flex-row gap-6 items-start">
+                        <div class="w-16 h-16 rounded-2xl bg-gray-100 flex items-center justify-center shrink-0 font-black text-2xl text-gray-400">3</div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">Считайте ROI (Окупаемость)</h4>
+                            <p class="text-gray-600 leading-relaxed">Если ваша услуга стоит дороже, чем у конкурента, покажите это в таблице. Докажите, что переплата в 50 рублей за отправку сегодня сэкономит клиенту 50 000 рублей на возвратах и претензиях в конце месяца.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- О Компании / Upsell секция -->
+    <section id="company" class="py-16 md:py-24 bg-cdek-dark text-white px-4 md:px-8 text-center scroll-reveal rounded-t-[3rem] relative overflow-hidden mt-8">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-cdek-green/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-cdek-orange/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-5xl mx-auto relative z-10">
+            <h2 class="text-3xl md:text-5xl font-bold mb-8">
+                Ищем тех, кто продает <br> <span class="text-cdek-green">мозгами, а не уговорами</span>
+            </h2>
+            <p class="text-xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
+                В <strong>ООО СДЭК ЮГ</strong> мы выстроили культуру интеллектуальных B2B-продаж. Нам не нужны «впариватели». Нам нужны системные, вдумчивые менеджеры, готовые разбираться в бизнесе клиента.
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-6 mb-12 text-left">
+                <div class="bg-white/5 backdrop-blur-sm p-8 rounded-[2rem] border border-white/10 hover:border-cdek-green transition-colors">
+                    <i data-lucide="globe" class="w-10 h-10 text-cdek-green mb-4"></i>
+                    <h4 class="font-bold text-xl mb-2 text-white">Масштаб</h4>
+                    <p class="text-gray-400 text-sm">Международные контракты и работа с крупным бизнесом (от e-commerce до производств).</p>
+                </div>
+                <div class="bg-white/5 backdrop-blur-sm p-8 rounded-[2rem] border border-white/10 hover:border-cdek-orange transition-colors">
+                    <i data-lucide="calculator" class="w-10 h-10 text-cdek-orange mb-4"></i>
+                    <h4 class="font-bold text-xl mb-2 text-white">Доход без потолка</h4>
+                    <p class="text-gray-400 text-sm">Мы не режем бонусы. Ты получаешь твердый оклад + честные 10% со сделок.</p>
+                </div>
+                <div class="bg-white/5 backdrop-blur-sm p-8 rounded-[2rem] border border-white/10 hover:border-cdek-purple transition-colors">
+                    <i data-lucide="graduation-cap" class="w-10 h-10 text-cdek-purple mb-4"></i>
+                    <h4 class="font-bold text-xl mb-2 text-white">Сильная школа</h4>
+                    <p class="text-gray-400 text-sm">Учим аналитике, стратегическим переговорам и работе с цифрами. Растим экспертов.</p>
+                </div>
+            </div>
+
+            <!-- Триггер срочности -->
+            <div class="mb-8 inline-block bg-cdek-green/20 text-cdek-green px-6 py-3 rounded-xl border border-cdek-green/30 font-medium text-sm md:text-base text-left md:text-center shadow-sm">
+                <i data-lucide="zap" class="w-5 h-5 inline-block mr-2 -mt-1"></i>
+                Открыт набор в команду отдела продаж. Принимаем заявки <strong>до конца недели</strong>.
+            </div>
+            <br>
+
+            <a href="http://hr.infocdek.ru/" target="_blank" rel="noopener noreferrer" class="magnetic-btn inline-flex items-center gap-3 bg-cdek-green text-white px-10 py-5 rounded-2xl font-bold text-xl shadow-xl shadow-cdek-green/20 hover:scale-105 transition-transform">
+                Подать заявку в команду
+                <i data-lucide="arrow-right" class="w-6 h-6"></i>
+            </a>
+            <p class="mt-4 text-sm text-gray-500 font-medium">Краснодар • Воронеж</p>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="bg-black py-12 px-4 md:px-8 text-white">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+            <div>
+                <p class="text-gray-400 text-sm font-bold mb-1">ООО «СДЭК-ЮГ» под упр. Елены Чернявской</p>
+                <p class="text-gray-500 text-xs">&copy; 2026 Все права защищены.</p>
+            </div>
+            <div class="flex gap-6 justify-center">
+                <a href="http://hr.infocdek.ru/privacy_politic.html" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors text-sm">Политика конфиденциальности</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+
+            // Анимация появления при скролле
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
